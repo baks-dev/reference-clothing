@@ -2,6 +2,7 @@
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
+use BaksDev\Reference\Clothing\Twig\SizeClothingExtension;
 use Symfony\Config\TwigConfig;
 
 return static function(ContainerConfigurator $configurator, TwigConfig $config) {
