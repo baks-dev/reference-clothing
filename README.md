@@ -10,7 +10,33 @@
 $ composer require baks-dev/reference-clothing
 ```
 
+## Натсройки
 
+Для отображения в выпадающих списках, добавить настройку сервиса в конфиг:
+
+config/packages/reference.php
+
+``` php
+<?php
+
+namespace Symfony\Component\DependencyInjection\Loader\Configurator;
+
+use BaksDev\Reference\Clothing\Choice\ReferenceChoiceSizeClothing;
+
+return static function (ContainerConfigurator $configurator) {
+	
+	$services = $configurator->services()
+		->defaults()
+		->autowire(true)
+		->autoconfigure(true)
+	;
+
+	$services->set(ReferenceChoiceSizeClothing::class)
+		->tag('baks.reference.choice')
+	;
+};
+
+```
 
 ## Журнал изменений ![Changelog](https://img.shields.io/badge/changelog-yellow)
 
