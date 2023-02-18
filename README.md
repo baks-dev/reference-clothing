@@ -26,13 +26,14 @@ use BaksDev\Reference\Clothing\Choice\ReferenceChoiceSizeClothing;
 return static function (ContainerConfigurator $configurator) {
 	
 	$services = $configurator->services()
-		->defaults()
-		->autowire(true)
-		->autoconfigure(true)
+	    ->defaults()
+	    ->autowire(true)
+	    ->autoconfigure(true)
 	;
 
-	$services->set(ReferenceChoiceSizeClothing::class)
-		->tag('baks.reference.choice')
+	$services
+	    ->set(ReferenceChoiceSizeClothing::class)
+	    ->tag('baks.reference.choice')
 	;
 };
 
