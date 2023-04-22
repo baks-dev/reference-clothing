@@ -49,19 +49,21 @@ final class SizeClothing
 	}
 	
 	
-	public function getValue() : string
-	{
-		return $this->type->value;
-	}
-	
-	
-	public function getType() : SizeClothingEnum
+	/**
+	 * @return SizeClothingEnum
+	 */
+	public function getSizeClothingEnum() : SizeClothingEnum
 	{
 		return $this->type;
 	}
 	
 	
-	public function getName() : string
+	public function getSizeClothingEnumValue() : string
+	{
+		return $this->type->value;
+	}
+	
+	public function getSizeClothingEnumName() : string
 	{
 		return $this->type->name;
 	}

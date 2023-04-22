@@ -20,22 +20,47 @@ declare(strict_types=1);
 
 namespace BaksDev\Reference\Clothing\Twig;
 
+use BaksDev\Reference\Clothing\Type\SizeClothing;
 use Symfony\Component\Form\FormView;
 use Twig\Environment;
+use Twig\Error\LoaderError;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
 final class SizeClothingExtension extends AbstractExtension
 {
-	public function getFunctions(): array
+	
+	public function getFunctions() : array
 	{
 		return [
-			new TwigFunction('size_clothing', [$this, 'sizeClothing'], ['needs_environment' => true]),
+			new TwigFunction(SizeClothing::TYPE, [$this, 'call'], ['needs_environment' => true, 'is_safe' => ['html']]),
+			new TwigFunction(SizeClothing::TYPE.'_render', [$this, 'render'], ['needs_environment' => true, 'is_safe' => ['html']]),
 		];
 	}
 	
-	public function sizeClothing(Environment $twig, string $size): string
-    {
-        return $size;
+	public function call(Environment $twig, string $value) : string
+	{
+		try
+		{
+			return $twig->render('@Template/Color/content.html.twig', ['value' => $value]);
+		}
+		catch(LoaderError $loaderError)
+		{
+			return $twig->render('@SizeClothing/content.html.twig', ['value' => $value]);
+		}
+	}
+	
+	
+	
+	public function render(Environment $twig, string $value) : string
+	{
+		try
+		{
+			return $twig->render('@Template/Color/template.html.twig', ['value' => $value]);
+		}
+		catch(LoaderError $loaderError)
+		{
+			return $twig->render('@SizeClothing/template.html.twig', ['value' => $value]);
+		}
 	}
 }

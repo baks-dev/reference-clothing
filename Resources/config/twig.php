@@ -12,7 +12,7 @@ return static function(ContainerConfigurator $configurator, TwigConfig $config) 
 		->autoconfigure() // Automatically registers your services as commands, event subscribers, etc.
 	;
 	
-	$services->set('color.input.twig.extension')
+	$services->set(SizeClothingExtension::class)
 		->class(SizeClothingExtension::class)
 		->tag('twig.extension')
 	;

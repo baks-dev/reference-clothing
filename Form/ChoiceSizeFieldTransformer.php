@@ -23,36 +23,25 @@
 
 declare(strict_types=1);
 
-namespace BaksDev\Reference\Clothing\Choice;
+namespace BaksDev\Reference\Clothing\Form;
 
-use BaksDev\Core\Services\Fields\FieldsChoiceInterface;
-use BaksDev\Core\Services\Reference\ReferenceChoiceInterface;
-use BaksDev\Reference\Clothing\Form\ChoiceSizeFieldForm;
 use BaksDev\Reference\Clothing\Type\SizeClothing;
-use BaksDev\Reference\Color\Type\Color;
+use Symfony\Component\Form\DataTransformerInterface;
 
-final class ReferenceChoiceSizeClothing implements ReferenceChoiceInterface, FieldsChoiceInterface
+final class ChoiceSizeFieldTransformer implements DataTransformerInterface
 {
-	public function equals($key) : bool
+	
+	public function transform(mixed $value)
 	{
-		return $key === SizeClothing::TYPE;
+		if(empty($value)) { return null; }
+		
+		return new SizeClothing($value);
 	}
 	
-	public function type() : string
-	{
-		return SizeClothing::TYPE;
-	}
-
 	
-	public function domain() : string
+	public function reverseTransform(mixed $value) : string
 	{
-		return 'reference.size.clothing';
-	}
-	
-	/** Возвращает класс формы для рендера */
-	public function form() : string
-	{
-		return ChoiceSizeFieldForm::class;
+		return (string) $value;
 	}
 	
 }

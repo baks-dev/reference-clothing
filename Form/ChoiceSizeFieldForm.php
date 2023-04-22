@@ -23,36 +23,48 @@
 
 declare(strict_types=1);
 
-namespace BaksDev\Reference\Clothing\Choice;
+namespace BaksDev\Reference\Clothing\Form;
 
-use BaksDev\Core\Services\Fields\FieldsChoiceInterface;
-use BaksDev\Core\Services\Reference\ReferenceChoiceInterface;
-use BaksDev\Reference\Clothing\Form\ChoiceSizeFieldForm;
 use BaksDev\Reference\Clothing\Type\SizeClothing;
-use BaksDev\Reference\Color\Type\Color;
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
-final class ReferenceChoiceSizeClothing implements ReferenceChoiceInterface, FieldsChoiceInterface
+final class ChoiceSizeFieldForm extends AbstractType
 {
-	public function equals($key) : bool
+	private ChoiceSizeFieldTransformer $transformer;
+	
+	
+	public function __construct(ChoiceSizeFieldTransformer $transformer)
 	{
-		return $key === SizeClothing::TYPE;
+		$this->transformer = $transformer;
 	}
 	
-	public function type() : string
+	public function buildForm(FormBuilderInterface $builder, array $options) : void
 	{
-		return SizeClothing::TYPE;
-	}
-
-	
-	public function domain() : string
-	{
-		return 'reference.size.clothing';
+		$builder->addModelTransformer($this->transformer);
 	}
 	
-	/** Возвращает класс формы для рендера */
-	public function form() : string
+	
+	public function configureOptions(OptionsResolver $resolver) : void
 	{
-		return ChoiceSizeFieldForm::class;
+		$resolver->setDefaults([
+			'choices' => SizeClothing::cases(),
+			'choice_value' => function($country) {
+				return $country?->getSizeClothingEnumValue();
+			},
+			'choice_label' => function($status) {
+				return $status->getSizeClothingEnumValue();
+			},
+			'translation_domain' => 'reference.size.clothing',
+			'placeholder' => 'placeholder',
+			'attr' => ['data-select' => 'select2']
+		]);
 	}
 	
+	public function getParent()
+	{
+		return ChoiceType::class;
+	}
 }
