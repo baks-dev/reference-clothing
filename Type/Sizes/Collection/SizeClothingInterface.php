@@ -21,46 +21,25 @@
  *  THE SOFTWARE.
  */
 
-declare(strict_types=1);
+namespace BaksDev\Reference\Clothing\Type\Sizes\Collection;
 
-namespace BaksDev\Reference\Clothing\Choice;
+use Symfony\Component\DependencyInjection\Attribute\AutoconfigureTag;
 
-use BaksDev\Core\Services\Fields\FieldsChoiceInterface;
-use BaksDev\Core\Services\Reference\ReferenceChoiceInterface;
-use BaksDev\Reference\Clothing\Form\ChoiceSizeFieldForm;
-use BaksDev\Reference\Clothing\Type\SizeClothing;
-
-final class ReferenceChoiceSizeClothing implements FieldsChoiceInterface, ReferenceChoiceInterface
+#[AutoconfigureTag('baks.size.clothing')]
+interface SizeClothingInterface
 {
+    /**
+     * Возвращает значение (value)
+     */
+    public function getValue(): string;
 
-    public function equals($key): bool
-    {
-        return $key === SizeClothing::TYPE;
-    }
+    /**
+     * Сортировка (чем выше число - тем первым в итерации будет значение)
+     */
+    public static function sort(): int;
 
-
-    public function type(): string
-    {
-        return SizeClothing::TYPE;
-    }
-
-
-    public function domain(): string
-    {
-        return 'reference.size.clothing';
-    }
-
-
-    /** Возвращает класс формы для рендера */
-    public function form(): string
-    {
-        return ChoiceSizeFieldForm::class;
-    }
-
-
-    /** Возвращает класс */
-    public function class(): string
-    {
-        return SizeClothing::class;
-    }
+    /**
+     * Проверяет, относится ли строка цвета к данному объекту
+     */
+    public static function equals(string $size): bool;
 }

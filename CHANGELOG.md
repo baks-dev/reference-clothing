@@ -4,6 +4,6 @@
 
 
 
-## 16.02.2023 ![Version](https://img.shields.io/badge/version-v6.2.0-blue)
+## 10.07.2023 ![Version](https://img.shields.io/badge/version-v6.3.0-blue)
 
 Новая версия

@@ -23,44 +23,41 @@
 
 declare(strict_types=1);
 
-namespace BaksDev\Reference\Clothing\Choice;
+namespace BaksDev\Reference\Clothing\Type\Sizes\Euro;
 
-use BaksDev\Core\Services\Fields\FieldsChoiceInterface;
-use BaksDev\Core\Services\Reference\ReferenceChoiceInterface;
-use BaksDev\Reference\Clothing\Form\ChoiceSizeFieldForm;
-use BaksDev\Reference\Clothing\Type\SizeClothing;
+use BaksDev\Reference\Clothing\Type\Sizes\Collection\SizeClothingInterface;
+use Symfony\Component\DependencyInjection\Attribute\AutoconfigureTag;
 
-final class ReferenceChoiceSizeClothing implements FieldsChoiceInterface, ReferenceChoiceInterface
+#[AutoconfigureTag('baks.size.clothing')]
+final class ThreeXL implements SizeClothingInterface
 {
 
-    public function equals($key): bool
+    public const SIZE = 'XL';
+
+
+    /**
+     * Возвращает значение (value)
+     */
+    public function getValue(): string
     {
-        return $key === SizeClothing::TYPE;
+        return self::SIZE;
     }
 
 
-    public function type(): string
+    /**
+     * Сортировка (чем выше число - тем первым в итерации будет значение)
+     */
+    public static function sort(): int
     {
-        return SizeClothing::TYPE;
+        return 79;
     }
 
 
-    public function domain(): string
+    /**
+     * Проверяет, относится ли строка цвета к данному объекту
+     */
+    public static function equals(string $size): bool
     {
-        return 'reference.size.clothing';
-    }
-
-
-    /** Возвращает класс формы для рендера */
-    public function form(): string
-    {
-        return ChoiceSizeFieldForm::class;
-    }
-
-
-    /** Возвращает класс */
-    public function class(): string
-    {
-        return SizeClothing::class;
+        return mb_strtolower(self::SIZE) === mb_strtolower($size);
     }
 }

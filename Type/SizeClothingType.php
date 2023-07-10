@@ -22,29 +22,43 @@ namespace BaksDev\Reference\Clothing\Type;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\StringType;
+use InvalidArgumentException;
 
 final class SizeClothingType extends StringType
 {
-    public const NAME = 'size_clothing_type';
-    
-    public function convertToDatabaseValue($value, AbstractPlatform $platform) : mixed
+
+    public function convertToDatabaseValue($value, AbstractPlatform $platform): mixed
     {
-        return $value instanceof SizeClothing ? $value->getValue() : (new SizeClothing($value))->getValue();
+        return $value instanceof SizeClothing ? $value->getSize() : $value;
     }
     
-    public function convertToPHPValue($value, AbstractPlatform $platform) : mixed
+
+    public function convertToPHPValue($value, AbstractPlatform $platform): mixed
     {
-        return !empty($value) ? new SizeClothing($value) : $value;
+
+        /** @var SizeClothing $size */
+        foreach(SizeClothing::cases() as $size)
+        {
+            if($size->getSizeValue() === $value)
+            {
+                return $size;
+            }
+        }
+
+        throw new InvalidArgumentException(sprintf('Not found Size Clothing %s', $value));
+
     }
-    
-    public function getName() : string
+
+
+    public function getName(): string
     {
-        return self::NAME;
+        return SizeClothing::TYPE;
     }
-    
-    public function requiresSQLCommentHint(AbstractPlatform $platform) : bool
+
+
+    public function requiresSQLCommentHint(AbstractPlatform $platform): bool
     {
         return true;
     }
-    
+
 }

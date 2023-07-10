@@ -23,44 +23,34 @@
 
 declare(strict_types=1);
 
-namespace BaksDev\Reference\Clothing\Choice;
+namespace BaksDev\Reference\Clothing\Type\Sizes\Collection;
 
-use BaksDev\Core\Services\Fields\FieldsChoiceInterface;
-use BaksDev\Core\Services\Reference\ReferenceChoiceInterface;
-use BaksDev\Reference\Clothing\Form\ChoiceSizeFieldForm;
-use BaksDev\Reference\Clothing\Type\SizeClothing;
+use Symfony\Component\DependencyInjection\Attribute\TaggedIterator;
 
-final class ReferenceChoiceSizeClothing implements FieldsChoiceInterface, ReferenceChoiceInterface
+final class SizeClothingCollection
 {
 
-    public function equals($key): bool
+    private iterable $sizes;
+
+
+    public function __construct(
+        #[TaggedIterator('baks.size.clothing', defaultPriorityMethod: 'sort')] iterable $sizes,
+    )
     {
-        return $key === SizeClothing::TYPE;
+        $this->sizes = $sizes;
     }
 
 
-    public function type(): string
+    /** Возвращает массив из значений SizeClothingInterface */
+    public function cases(): array
     {
-        return SizeClothing::TYPE;
-    }
+        $case = null;
 
+        foreach($this->sizes as $size)
+        {
+            $case[] = new $size();
+        }
 
-    public function domain(): string
-    {
-        return 'reference.size.clothing';
-    }
-
-
-    /** Возвращает класс формы для рендера */
-    public function form(): string
-    {
-        return ChoiceSizeFieldForm::class;
-    }
-
-
-    /** Возвращает класс */
-    public function class(): string
-    {
-        return SizeClothing::class;
+        return $case;
     }
 }

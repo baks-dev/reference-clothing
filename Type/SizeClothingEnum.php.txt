@@ -22,14 +22,32 @@ namespace BaksDev\Reference\Clothing\Type;
 
 enum SizeClothingEnum: string
 {
+
+
     case TWOXS = '2XS';
-    case XS = 'XS';
-    case S = 'S';
-    case M = 'M';
-    case L = 'L';
-    case XL = 'XL';
-    case TWOXL = '2XL';
-    case THREEXL = '3XL';
-    case FOUREXL = '4XL';
+ case XS = 'XS';
+ case S = 'S';
+ case M = 'M';
+ case L = 'L';
+ case XL = 'XL';
+ case TWOXL = '2XL';
+ case THREEXL = '3XL';
+ case FOUREXL = '4XL';
+
+
+ case S98 = '98';
+ case S104 = '104';
+ case S110 = '110';
+ case S116 = '116';
+ case S117 = '117';
+ case S122 = '122';
+ case S128 = '128';
+ case S134 = '134';
+ case S140 = '140';
+ case S146 = '146';
+ case S152 = '152';
+ case S158 = '158';
+ case S164 = '164';
+ case S170 = '170';
 
 }

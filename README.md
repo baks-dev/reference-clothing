@@ -1,8 +1,8 @@
-# BaksDev Сlothing
+# BaksDev Clothing Sizes
 
-![Version](https://img.shields.io/badge/version-6.2-blue) ![php 8.1+](https://img.shields.io/badge/php-min%208.1-red.svg)
+![Version](https://img.shields.io/badge/version-6.3-blue) ![php 8.1+](https://img.shields.io/badge/php-min%208.1-red.svg)
 
-Библиотека цветов размеров одежды (2XS ... 4XL)
+Библиотека размеров одежды (2XS ... 4XL)
 
 ## Установка
 
@@ -10,34 +10,6 @@
 $ composer require baks-dev/reference-clothing
 ```
 
-## Настройки
-
-Для отображения в выпадающих списках, добавить настройку сервиса в конфиг:
-
-config/packages/reference.php
-
-``` php
-<?php
-
-namespace Symfony\Component\DependencyInjection\Loader\Configurator;
-
-use BaksDev\Reference\Clothing\Choice\ReferenceChoiceSizeClothing;
-
-return static function (ContainerConfigurator $configurator) {
-	
-	$services = $configurator->services()
-	    ->defaults()
-	    ->autowire(true)
-	    ->autoconfigure(true)
-	;
-
-	$services
-	    ->set(ReferenceChoiceSizeClothing::class)
-	    ->tag('baks.reference.choice')
-	;
-};
-
-```
 
 ## Журнал изменений ![Changelog](https://img.shields.io/badge/changelog-yellow)
 
