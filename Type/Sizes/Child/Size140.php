@@ -45,11 +45,11 @@ final class Size140 implements SizeClothingInterface
 
 
     /**
-     * Сортировка (чем выше число - тем первым в итерации будет значение)
+     * Сортировка (чем меньше число - тем первым в итерации будет значение)
      */
     public static function sort(): int
     {
-        return 49;
+        return 54;
     }
 
 

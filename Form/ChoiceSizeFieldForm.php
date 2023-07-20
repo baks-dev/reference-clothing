@@ -51,11 +51,11 @@ final class ChoiceSizeFieldForm extends AbstractType
 	{
 		$resolver->setDefaults([
 			'choices' => SizeClothing::cases(),
-			'choice_value' => function($country) {
-				return $country?->getSizeClothingEnumValue();
+			'choice_value' => function(?SizeClothing $size) {
+				return $size?->getSizeValue();
 			},
-			'choice_label' => function($status) {
-				return $status->getSizeClothingEnumValue();
+			'choice_label' => function(SizeClothing $size) {
+				return $size->getSizeValue();
 			},
 			'translation_domain' => 'reference.size.clothing',
 			'placeholder' => 'placeholder',

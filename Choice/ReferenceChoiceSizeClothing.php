@@ -45,6 +45,13 @@ final class ReferenceChoiceSizeClothing implements FieldsChoiceInterface, Refere
     }
 
 
+    /** Возвращает класс */
+    public function class(): string
+    {
+        return SizeClothing::class;
+    }
+
+
     public function domain(): string
     {
         return 'reference.size.clothing';
@@ -57,10 +64,4 @@ final class ReferenceChoiceSizeClothing implements FieldsChoiceInterface, Refere
         return ChoiceSizeFieldForm::class;
     }
 
-
-    /** Возвращает класс */
-    public function class(): string
-    {
-        return SizeClothing::class;
-    }
 }

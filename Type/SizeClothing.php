@@ -75,7 +75,7 @@ final class SizeClothing
     /** Возвращает значение ColorsInterface */
     public function getSizeValue(): string
     {
-        return $this->size->getValue();
+        return $this->size?->getValue() ?: '';
     }
 
 

@@ -14,9 +14,10 @@ return static function(ContainerConfigurator $configurator)
 
         $services->load($namespace.'\Form\\', __DIR__.'/../../Form');
 
-        $services->load($namespace.'\Type\Sizes\Collection\\', __DIR__.'/../../Type/Sizes/Collection');
+        $services->load($namespace.'\Type\Sizes\\', __DIR__.'/../../Type/Sizes');
 
         $services->load($namespace.'\Listeners\\', __DIR__.'/../../Listeners');
+
 
     };
 

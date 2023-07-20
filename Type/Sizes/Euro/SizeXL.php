@@ -26,7 +26,9 @@ declare(strict_types=1);
 namespace BaksDev\Reference\Clothing\Type\Sizes\Euro;
 
 use BaksDev\Reference\Clothing\Type\Sizes\Collection\SizeClothingInterface;
+use Symfony\Component\DependencyInjection\Attribute\AutoconfigureTag;
 
+#[AutoconfigureTag('baks.size.clothing')]
 final class SizeXL implements SizeClothingInterface
 {
 
@@ -43,11 +45,11 @@ final class SizeXL implements SizeClothingInterface
 
 
     /**
-     * Сортировка (чем выше число - тем первым в итерации будет значение)
+     * Сортировка (чем меньше число - тем первым в итерации будет значение)
      */
     public static function sort(): int
     {
-        return 85;
+        return 18;
     }
 
 

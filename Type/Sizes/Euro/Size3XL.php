@@ -29,10 +29,10 @@ use BaksDev\Reference\Clothing\Type\Sizes\Collection\SizeClothingInterface;
 use Symfony\Component\DependencyInjection\Attribute\AutoconfigureTag;
 
 #[AutoconfigureTag('baks.size.clothing')]
-final class TwoXL implements SizeClothingInterface
+final class Size3XL implements SizeClothingInterface
 {
 
-    public const SIZE = '2XL';
+    public const SIZE = '3XL';
 
 
     /**
@@ -45,11 +45,11 @@ final class TwoXL implements SizeClothingInterface
 
 
     /**
-     * Сортировка (чем выше число - тем первым в итерации будет значение)
+     * Сортировка (чем меньше число - тем первым в итерации будет значение)
      */
     public static function sort(): int
     {
-        return 82;
+        return 24;
     }
 
 
