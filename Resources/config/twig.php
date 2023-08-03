@@ -2,25 +2,8 @@
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use BaksDev\Reference\Clothing\Twig\SizeClothingExtension;
 use Symfony\Config\TwigConfig;
 
-return static function(ContainerConfigurator $configurator, TwigConfig $config) {
-	$services = $configurator->services()
-		->defaults()
-		->autowire()      // Automatically injects dependencies in your services.
-		->autoconfigure() // Automatically registers your services as commands, event subscribers, etc.
-	;
-	
-	$services->set(SizeClothingExtension::class)
-		->class(SizeClothingExtension::class)
-		->tag('twig.extension')
-	;
-	
-	$config->path(__DIR__.'/../view', 'SizeClothing');
-	
+return static function(TwigConfig $twig) {
+	$twig->path(__DIR__.'/../view', 'SizeClothing');
 };
-
-
-
-

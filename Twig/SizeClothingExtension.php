@@ -21,7 +21,6 @@ declare(strict_types=1);
 namespace BaksDev\Reference\Clothing\Twig;
 
 use BaksDev\Reference\Clothing\Type\SizeClothing;
-use Symfony\Component\Form\FormView;
 use Twig\Environment;
 use Twig\Error\LoaderError;
 use Twig\Extension\AbstractExtension;
@@ -42,7 +41,7 @@ final class SizeClothingExtension extends AbstractExtension
 	{
 		try
 		{
-			return $twig->render('@Template/Color/content.html.twig', ['value' => $value]);
+			return $twig->render('@Template/SizeClothing/content.html.twig', ['value' => $value]);
 		}
 		catch(LoaderError $loaderError)
 		{
@@ -56,7 +55,7 @@ final class SizeClothingExtension extends AbstractExtension
 	{
 		try
 		{
-			return $twig->render('@Template/Color/template.html.twig', ['value' => $value]);
+			return $twig->render('@Template/SizeClothing/template.html.twig', ['value' => $value]);
 		}
 		catch(LoaderError $loaderError)
 		{

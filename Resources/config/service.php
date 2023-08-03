@@ -2,22 +2,24 @@
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
-return static function(ContainerConfigurator $configurator)
-    {
+return static function(ContainerConfigurator $configurator) {
 
-        $services = $configurator->services()
-            ->defaults()
-            ->autowire(true)
-            ->autoconfigure(true);
+    $services = $configurator->services()
+        ->defaults()
+        ->autowire(true)
+        ->autoconfigure(true);
 
-        $namespace = 'BaksDev\Reference\Clothing';
+    $NAMESPACE = 'BaksDev\Reference\Clothing\\';
 
-        $services->load($namespace.'\Form\\', __DIR__.'/../../Form');
+    $MODULE = substr(__DIR__, 0, strpos(__DIR__, "Resources"));
 
-        $services->load($namespace.'\Type\Sizes\\', __DIR__.'/../../Type/Sizes');
+    $services->load($NAMESPACE.'Form\\', $MODULE.'Form');
 
-        $services->load($namespace.'\Listeners\\', __DIR__.'/../../Listeners');
+    $services->load($NAMESPACE.'Type\Sizes\\', $MODULE.'Type/Sizes');
 
+    $services->load($NAMESPACE.'Listeners\\', $MODULE.'Listeners');
 
-    };
+    $services->load($NAMESPACE.'Twig\\', $MODULE.'Twig');
+
+};
 
