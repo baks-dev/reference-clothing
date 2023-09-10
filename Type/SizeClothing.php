@@ -83,11 +83,11 @@ final class SizeClothing
     {
         $case = [];
 
-        foreach(self::getDeclaredSizes() as $size)
+        foreach(self::getDeclaredSizes() as $key => $size)
         {
             /** @var SizeClothingInterface $size */
             $sizes = new $size;
-            $case[$sizes::sort()] = new self($sizes);
+            $case[$sizes::sort().$key] = new self($sizes);
         }
 
         ksort($case);
