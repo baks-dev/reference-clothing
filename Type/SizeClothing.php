@@ -134,7 +134,7 @@ final class SizeClothing
     //	}
     //
     //
-    //	public function __toString() : string
+    //	public function __toString(): string
     //	{
     //		return $this->type->value;
     //	}
@@ -149,12 +149,12 @@ final class SizeClothing
     //	}
     //
     //
-    //	public function getSizeClothingEnumValue() : string
+    //	public function getSizeClothingEnumValue(): string
     //	{
     //		return $this->type->value;
     //	}
     //
-    //	public function getSizeClothingEnumName() : string
+    //	public function getSizeClothingEnumName(): string
     //	{
     //		return $this->type->name;
     //	}
