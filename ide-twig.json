@@ -1,7 +1,7 @@
 {
   "namespaces": [
     {
-      "namespace": "SizeClothing",
+      "namespace": "reference-clothing",
       "path": "Resources/view"
     }
   ]

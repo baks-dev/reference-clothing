@@ -41,11 +41,11 @@ final class SizeClothingExtension extends AbstractExtension
 	{
 		try
 		{
-			return $twig->render('@Template/SizeClothing/content.html.twig', ['value' => $value]);
+			return $twig->render('@Template/reference-clothing/content.html.twig', ['value' => $value]);
 		}
 		catch(LoaderError $loaderError)
 		{
-			return $twig->render('@SizeClothing/content.html.twig', ['value' => $value]);
+			return $twig->render('@reference-clothing/content.html.twig', ['value' => $value]);
 		}
 	}
 	
@@ -55,11 +55,11 @@ final class SizeClothingExtension extends AbstractExtension
 	{
 		try
 		{
-			return $twig->render('@Template/SizeClothing/template.html.twig', ['value' => $value]);
+			return $twig->render('@Template/reference-clothing/template.html.twig', ['value' => $value]);
 		}
 		catch(LoaderError $loaderError)
 		{
-			return $twig->render('@SizeClothing/template.html.twig', ['value' => $value]);
+			return $twig->render('@reference-clothing/template.html.twig', ['value' => $value]);
 		}
 	}
 }
