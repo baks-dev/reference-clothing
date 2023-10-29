@@ -35,18 +35,7 @@ final class SizeClothingType extends StringType
 
     public function convertToPHPValue($value, AbstractPlatform $platform): mixed
     {
-
-        /** @var SizeClothing $size */
-        foreach(SizeClothing::cases() as $size)
-        {
-            if($size->getSizeValue() === $value)
-            {
-                return $size;
-            }
-        }
-
-        throw new InvalidArgumentException(sprintf('Not found Size Clothing %s', $value));
-
+        return !empty($value) ? new SizeClothing($value) : null;
     }
 
 
