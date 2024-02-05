@@ -49,7 +49,7 @@ final class Size7XL implements SizeClothingInterface
      */
     public static function sort(): int
     {
-        return 30;
+        return 20;
     }
 
 

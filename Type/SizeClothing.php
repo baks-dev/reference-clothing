@@ -87,7 +87,7 @@ final class SizeClothing
         {
             /** @var SizeClothingInterface $size */
             $sizes = new $size;
-            $case[$sizes::sort().$key] = new self($sizes);
+            $case[$sizes::sort().$sizes->getValue().$key] = new self($sizes);
         }
 
         ksort($case);

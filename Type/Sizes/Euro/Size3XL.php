@@ -49,7 +49,7 @@ final class Size3XL implements SizeClothingInterface
      */
     public static function sort(): int
     {
-        return 24;
+        return 20;
     }
 
 
