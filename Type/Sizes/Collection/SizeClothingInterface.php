@@ -36,7 +36,7 @@ interface SizeClothingInterface
     /**
      * Сортировка (чем меньше число - тем первым в итерации будет значение)
      */
-    public static function sort(): int;
+    public static function priority(): int;
 
     /**
      * Проверяет, относится ли строка цвета к данному объекту

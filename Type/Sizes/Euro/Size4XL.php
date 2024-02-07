@@ -47,7 +47,7 @@ final class Size4XL implements SizeClothingInterface
     /**
      * Сортировка (чем меньше число - тем первым в итерации будет значение)
      */
-    public static function sort(): int
+    public static function priority(): int
     {
         return 20;
     }
