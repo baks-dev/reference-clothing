@@ -64,4 +64,8 @@ final class ReferenceChoiceSizeClothing implements FieldsChoiceInterface, Refere
         return ChoiceSizeFieldForm::class;
     }
 
+    public function constraints(): ?array
+    {
+        return null;
+    }
 }
