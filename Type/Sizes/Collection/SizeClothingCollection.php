@@ -29,14 +29,12 @@ use Symfony\Component\DependencyInjection\Attribute\TaggedIterator;
 
 final class SizeClothingCollection
 {
-
     private iterable $sizes;
 
 
     public function __construct(
         #[TaggedIterator('baks.size.clothing', defaultPriorityMethod: 'sort')] iterable $sizes,
-    )
-    {
+    ) {
         $this->sizes = $sizes;
     }
 

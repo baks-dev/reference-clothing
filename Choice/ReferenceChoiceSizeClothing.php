@@ -32,7 +32,6 @@ use BaksDev\Reference\Clothing\Type\SizeClothing;
 
 final class ReferenceChoiceSizeClothing implements FieldsChoiceInterface, ReferenceChoiceInterface
 {
-
     public function equals($key): bool
     {
         return $key === SizeClothing::TYPE;

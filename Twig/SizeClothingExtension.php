@@ -28,38 +28,36 @@ use Twig\TwigFunction;
 
 final class SizeClothingExtension extends AbstractExtension
 {
-	
-	public function getFunctions() : array
-	{
-		return [
-			new TwigFunction(SizeClothing::TYPE, [$this, 'call'], ['needs_environment' => true, 'is_safe' => ['html']]),
-			new TwigFunction(SizeClothing::TYPE.'_render', [$this, 'render'], ['needs_environment' => true, 'is_safe' => ['html']]),
-		];
-	}
-	
-	public function call(Environment $twig, string $value): string
-	{
-		try
-		{
-			return $twig->render('@Template/reference-clothing/content.html.twig', ['value' => $value]);
-		}
-		catch(LoaderError $loaderError)
-		{
-			return $twig->render('@reference-clothing/content.html.twig', ['value' => $value]);
-		}
-	}
-	
-	
-	
-	public function render(Environment $twig, string $value): string
-	{
-		try
-		{
-			return $twig->render('@Template/reference-clothing/template.html.twig', ['value' => $value]);
-		}
-		catch(LoaderError $loaderError)
-		{
-			return $twig->render('@reference-clothing/template.html.twig', ['value' => $value]);
-		}
-	}
+    public function getFunctions(): array
+    {
+        return [
+            new TwigFunction(SizeClothing::TYPE, [$this, 'call'], ['needs_environment' => true, 'is_safe' => ['html']]),
+            new TwigFunction(SizeClothing::TYPE.'_render', [$this, 'render'], ['needs_environment' => true, 'is_safe' => ['html']]),
+        ];
+    }
+
+    public function call(Environment $twig, string $value): string
+    {
+        try
+        {
+            return $twig->render('@Template/reference-clothing/content.html.twig', ['value' => $value]);
+        }
+        catch(LoaderError $loaderError)
+        {
+            return $twig->render('@reference-clothing/content.html.twig', ['value' => $value]);
+        }
+    }
+
+
+    public function render(Environment $twig, string $value): string
+    {
+        try
+        {
+            return $twig->render('@Template/reference-clothing/template.html.twig', ['value' => $value]);
+        }
+        catch(LoaderError $loaderError)
+        {
+            return $twig->render('@reference-clothing/template.html.twig', ['value' => $value]);
+        }
+    }
 }

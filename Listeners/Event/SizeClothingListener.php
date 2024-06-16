@@ -39,7 +39,6 @@ use Symfony\Component\HttpKernel\Event\ControllerEvent;
 #[AsEventListener(event: ConsoleEvents::COMMAND)]
 final class SizeClothingListener
 {
-
     private SizeClothingCollection $collection;
 
 
@@ -47,7 +46,7 @@ final class SizeClothingListener
     {
         $this->collection = $collection;
     }
-    
+
 
     public function onKernelController(ControllerEvent $event): void
     {

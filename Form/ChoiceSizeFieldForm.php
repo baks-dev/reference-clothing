@@ -33,38 +33,38 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 final class ChoiceSizeFieldForm extends AbstractType
 {
-	private ChoiceSizeFieldTransformer $transformer;
-	
-	
-	public function __construct(ChoiceSizeFieldTransformer $transformer)
-	{
-		$this->transformer = $transformer;
-	}
-	
-	public function buildForm(FormBuilderInterface $builder, array $options) : void
-	{
-		$builder->addModelTransformer($this->transformer);
-	}
-	
-	
-	public function configureOptions(OptionsResolver $resolver) : void
-	{
-		$resolver->setDefaults([
-			'choices' => SizeClothing::cases(),
-			'choice_value' => function(?SizeClothing $size) {
-				return $size?->getSizeValue();
-			},
-			'choice_label' => function(SizeClothing $size) {
-				return $size->getSizeValue();
-			},
-			'translation_domain' => 'reference.size.clothing',
-			'placeholder' => 'placeholder',
-			'attr' => ['data-select' => 'select2']
-		]);
-	}
-	
-	public function getParent(): string
+    private ChoiceSizeFieldTransformer $transformer;
+
+
+    public function __construct(ChoiceSizeFieldTransformer $transformer)
     {
-		return ChoiceType::class;
-	}
+        $this->transformer = $transformer;
+    }
+
+    public function buildForm(FormBuilderInterface $builder, array $options): void
+    {
+        $builder->addModelTransformer($this->transformer);
+    }
+
+
+    public function configureOptions(OptionsResolver $resolver): void
+    {
+        $resolver->setDefaults([
+            'choices' => SizeClothing::cases(),
+            'choice_value' => function (?SizeClothing $size) {
+                return $size?->getSizeValue();
+            },
+            'choice_label' => function (SizeClothing $size) {
+                return $size->getSizeValue();
+            },
+            'translation_domain' => 'reference.size.clothing',
+            'placeholder' => 'placeholder',
+            'attr' => ['data-select' => 'select2']
+        ]);
+    }
+
+    public function getParent(): string
+    {
+        return ChoiceType::class;
+    }
 }

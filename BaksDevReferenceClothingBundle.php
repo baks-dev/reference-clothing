@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace BaksDev\Reference\Clothing;
 
-use DirectoryIterator;
+use BaksDev\Reference\Clothing\Choice\ReferenceChoiceSizeClothing;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
@@ -56,6 +56,11 @@ class BaksDevReferenceClothingBundle extends AbstractBundle
             self::NAMESPACE.'Twig\\',
             self::PATH.'Twig'
         );
+
+        $services->set(ReferenceChoiceSizeClothing::class)
+            ->tag('baks.reference.choice')
+            ->tag('baks.fields.choice');
+
     }
 
 }

@@ -1,8 +1,8 @@
 <?php
 
 return [
-	'placeholder' =>'Choose a size clothing ...',
-	'label' =>'Size Clothing',
+    'placeholder' => 'Choose a size clothing ...',
+    'label' => 'Size Clothing',
 
 
 ];

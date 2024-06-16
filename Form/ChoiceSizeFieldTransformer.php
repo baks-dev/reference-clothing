@@ -30,18 +30,20 @@ use Symfony\Component\Form\DataTransformerInterface;
 
 final class ChoiceSizeFieldTransformer implements DataTransformerInterface
 {
-	
-	public function transform(mixed $value): ?SizeClothing
+    public function transform(mixed $value): ?SizeClothing
     {
-		if(empty($value)) { return null; }
-		
-		return new SizeClothing($value);
-	}
-	
-	
-	public function reverseTransform(mixed $value): string
-	{
-		return (string) $value;
-	}
-	
+        if(empty($value))
+        {
+            return null;
+        }
+
+        return new SizeClothing($value);
+    }
+
+
+    public function reverseTransform(mixed $value): string
+    {
+        return (string) $value;
+    }
+
 }

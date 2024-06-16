@@ -26,13 +26,10 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 use BaksDev\Reference\Clothing\BaksDevReferenceClothingBundle;
 use Symfony\Config\FrameworkConfig;
 
-return static function(FrameworkConfig $config) {
+return static function (FrameworkConfig $config) {
 
     $config
         ->translator()
         ->paths([BaksDevReferenceClothingBundle::PATH.'Resources/translations/']);
 
 };
-
-
-

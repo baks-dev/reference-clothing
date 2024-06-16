@@ -27,12 +27,11 @@ use InvalidArgumentException;
 
 final class SizeClothingType extends Type
 {
-
     public function convertToDatabaseValue($value, AbstractPlatform $platform): string
     {
         return $value instanceof SizeClothing ? $value->getSizeValue() : $value;
     }
-    
+
 
     public function convertToPHPValue($value, AbstractPlatform $platform): ?SizeClothing
     {

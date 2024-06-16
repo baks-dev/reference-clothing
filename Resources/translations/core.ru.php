@@ -21,4 +21,4 @@
  *  THE SOFTWARE.
  */
 
-return [ 'size_clothing_type' => 'Размер' ];
+return ['size_clothing_type' => 'Размер'];

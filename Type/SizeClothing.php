@@ -25,7 +25,6 @@ use BaksDev\Reference\Clothing\Type\Sizes\Collection\SizeClothingInterface;
 /** Размер одежды (2XS ... 4XL) */
 final class SizeClothing
 {
-
     public const TYPE = 'size_clothing_type';
 
     private ?SizeClothingInterface $size = null;
@@ -50,7 +49,7 @@ final class SizeClothing
             {
                 if($class::equals($size))
                 {
-                    $this->size = new $class;
+                    $this->size = new $class();
                     break;
                 }
             }
@@ -86,7 +85,7 @@ final class SizeClothing
         foreach(self::getDeclaredSizes() as $key => $size)
         {
             /** @var SizeClothingInterface $size */
-            $sizes = new $size;
+            $sizes = new $size();
             $case[$sizes::priority().$key] = new self($sizes);
         }
 
@@ -100,10 +99,9 @@ final class SizeClothing
     {
         return array_filter(
             get_declared_classes(),
-            static function($className)
-                {
-                    return in_array(SizeClothingInterface::class, class_implements($className), true);
-                },
+            static function ($className) {
+                return in_array(SizeClothingInterface::class, class_implements($className), true);
+            },
         );
     }
 

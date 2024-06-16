@@ -31,7 +31,6 @@ use Symfony\Component\DependencyInjection\Attribute\AutoconfigureTag;
 #[AutoconfigureTag('baks.size.clothing')]
 final class SizeM implements SizeClothingInterface
 {
-
     public const SIZE = 'M';
 
 
