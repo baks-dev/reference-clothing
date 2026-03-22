@@ -29,12 +29,6 @@ use Symfony\Component\DependencyInjection\Attribute\AutoconfigureTag;
 interface SizeClothingInterface
 {
     /**
-     * Возвращает значение (value)
-     */
-    public function getValue(): string;
-
-
-    /**
      * Сортировка (чем меньше число - тем первым в итерации будет значение)
      */
     public static function priority(): int;
@@ -43,4 +37,9 @@ interface SizeClothingInterface
      * Проверяет, относится ли строка цвета к данному объекту
      */
     public static function equals(string $size): bool;
+
+    /**
+     * Возвращает значение (value)
+     */
+    public function getValue(): string;
 }

@@ -23,7 +23,6 @@ namespace BaksDev\Reference\Clothing\Type;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\StringType;
 use Doctrine\DBAL\Types\Type;
-use InvalidArgumentException;
 
 final class SizeClothingType extends Type
 {

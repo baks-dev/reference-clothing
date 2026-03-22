@@ -51,15 +51,15 @@ final class ChoiceSizeFieldForm extends AbstractType
     {
         $resolver->setDefaults([
             'choices' => SizeClothing::cases(),
-            'choice_value' => function (?SizeClothing $size) {
+            'choice_value' => function(?SizeClothing $size) {
                 return $size?->getSizeValue();
             },
-            'choice_label' => function (SizeClothing $size) {
+            'choice_label' => function(SizeClothing $size) {
                 return $size->getSizeValue();
             },
             'translation_domain' => 'reference.size.clothing',
             'placeholder' => 'placeholder',
-            'attr' => ['data-select' => 'select2']
+            'attr' => ['data-select' => 'select2'],
         ]);
     }
 

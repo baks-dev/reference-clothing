@@ -26,7 +26,7 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 use BaksDev\Reference\Clothing\BaksDevReferenceClothingBundle;
 use BaksDev\Reference\Clothing\Choice\ReferenceChoiceSizeClothing;
 
-return static function (ContainerConfigurator $configurator) {
+return static function(ContainerConfigurator $configurator) {
 
     $services = $configurator->services()
         ->defaults()
@@ -54,7 +54,7 @@ return static function (ContainerConfigurator $configurator) {
 
     $services->load(
         $NAMESPACE.'Type\Sizes\\',
-        $PATH.implode(DIRECTORY_SEPARATOR, ['Type', 'Sizes'])
+        $PATH.implode(DIRECTORY_SEPARATOR, ['Type', 'Sizes']),
     );
 
     $services->set(ReferenceChoiceSizeClothing::class)

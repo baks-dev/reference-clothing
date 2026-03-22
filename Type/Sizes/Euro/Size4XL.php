@@ -38,6 +38,22 @@ final class Size4XL implements SizeClothingInterface
     private const int WB = 270158646;
 
     /**
+     * Сортировка (чем меньше число - тем первым в итерации будет значение)
+     */
+    public static function priority(): int
+    {
+        return 20;
+    }
+
+    /**
+     * Проверяет, относится ли строка цвета к данному объекту
+     */
+    public static function equals(string $size): bool
+    {
+        return mb_strtolower(self::SIZE) === mb_strtolower($size);
+    }
+
+    /**
      * Размер
      */
     public function getValue(): string
@@ -59,24 +75,5 @@ final class Size4XL implements SizeClothingInterface
     public function getWb(): int
     {
         return self::WB;
-    }
-
-
-
-    /**
-     * Сортировка (чем меньше число - тем первым в итерации будет значение)
-     */
-    public static function priority(): int
-    {
-        return 20;
-    }
-
-
-    /**
-     * Проверяет, относится ли строка цвета к данному объекту
-     */
-    public static function equals(string $size): bool
-    {
-        return mb_strtolower(self::SIZE) === mb_strtolower($size);
     }
 }

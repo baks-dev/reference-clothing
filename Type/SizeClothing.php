@@ -62,26 +62,21 @@ final class SizeClothing
 
     }
 
-
-    public function __toString(): string
-    {
-        return $this->size ? $this->size->getvalue() : '';
-    }
-
-
     /** Возвращает значение ColorsInterface */
     public function getSize(): SizeClothingInterface
     {
         return $this->size;
     }
 
-
-    /** Возвращает значение ColorsInterface */
-    public function getSizeValue(): string
+    public static function getDeclaredSizes(): array
     {
-        return $this->size?->getValue() ?: '';
+        return array_filter(
+            get_declared_classes(),
+            static function($className) {
+                return in_array(SizeClothingInterface::class, class_implements($className), true);
+            },
+        );
     }
-
 
     public static function cases(): array
     {
@@ -99,15 +94,15 @@ final class SizeClothing
         return $case;
     }
 
-
-    public static function getDeclaredSizes(): array
+    public function __toString(): string
     {
-        return array_filter(
-            get_declared_classes(),
-            static function ($className) {
-                return in_array(SizeClothingInterface::class, class_implements($className), true);
-            },
-        );
+        return $this->size ? $this->size->getvalue() : '';
+    }
+
+    /** Возвращает значение ColorsInterface */
+    public function getSizeValue(): string
+    {
+        return $this->size?->getValue() ?: '';
     }
 
 

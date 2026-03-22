@@ -33,16 +33,6 @@ final class Size128 implements SizeClothingInterface
 {
     public const string SIZE = '128';
 
-
-    /**
-     * Возвращает значение (value)
-     */
-    public function getValue(): string
-    {
-        return self::SIZE;
-    }
-
-
     /**
      * Сортировка (чем меньше число - тем первым в итерации будет значение)
      */
@@ -51,12 +41,19 @@ final class Size128 implements SizeClothingInterface
         return 48;
     }
 
-
     /**
      * Проверяет, относится ли строка цвета к данному объекту
      */
     public static function equals(string $size): bool
     {
         return mb_strtolower(self::SIZE) === mb_strtolower($size);
+    }
+
+    /**
+     * Возвращает значение (value)
+     */
+    public function getValue(): string
+    {
+        return self::SIZE;
     }
 }

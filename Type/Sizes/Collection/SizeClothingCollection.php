@@ -34,7 +34,8 @@ final class SizeClothingCollection
 
     public function __construct(
         #[AutowireIterator('baks.size.clothing', defaultPriorityMethod: 'sort')] iterable $sizes,
-    ) {
+    )
+    {
         $this->sizes = $sizes;
     }
 
